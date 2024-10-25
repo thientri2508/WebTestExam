@@ -70,8 +70,15 @@ const productSlice = createSlice({
         state.error = action.error.message || 'Failed to fetch products';
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
-        state.product = action.payload;
-      });
+        if (action.payload) {
+          state.product = action.payload;
+          state.status = 'succeeded';
+        } else {
+          state.product = null;
+          state.status = 'failed';
+          state.error = 'Product not found';
+        }
+      })
   },
 });
 

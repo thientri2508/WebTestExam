@@ -55,8 +55,8 @@ const ProductDetail = () => {
   return (
     <main className="w-full mt-[100px] md:mt-[180px] lg:mt-[140px]">
         <div className="w-[90%] lg:max-w-screen-lg m-auto">
-        {status === 'loading' ? (
-        <p>Loading...</p>
+        {status === 'failed' ? (
+        <p className="font-bold text-[30px] w-full text-center pt-10">Không tìm thấy sản phẩm</p>
         ) : product ? (
             <>
             <div className="flex gap-5 items-center">
