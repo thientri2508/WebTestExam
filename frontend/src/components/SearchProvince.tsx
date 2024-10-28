@@ -1,22 +1,15 @@
 import { Province } from '../services/provinceService'
 import { useProvincesByName } from '../hooks/useProvinces';
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const SearchProvince = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
-    const [searchEnabled, setSearchEnabled] = useState(false);
-    const { data: searchResults, isLoading, error } = useProvincesByName(searchTerm, searchEnabled);
+    const { data: searchResults, isLoading, error, refetch } = useProvincesByName(searchTerm);
 
     const handleSearch = () => {
-      setSearchEnabled(true); // Bật để cho phép gọi API
+      refetch();
     };
-    
-    useEffect(() => {
-      if (searchResults) {
-        setSearchEnabled(false);
-      }
-    }, [searchResults]);
 
   return (
     <div>

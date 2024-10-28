@@ -6,10 +6,10 @@ export const useProvinces = () => {
   return useQuery<Province[], Error>({ queryKey: ['provinces'], queryFn: fetchProvinces });
 };
 
-export const useProvincesByName = (name: string, enabled: boolean) => {
+export const useProvincesByName = (name: string) => {
   return useQuery<Province[], Error>({
-    queryKey: ['provinces', 'q', name],
+    queryKey: ['provinces', name],
     queryFn: () => fetchProvincesByName(name),
-    enabled: enabled && !!name,
+    enabled: false,
   });
 };
